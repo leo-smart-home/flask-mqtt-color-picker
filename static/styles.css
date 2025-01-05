@@ -48,6 +48,22 @@ body {
     font-size: 1em;
 }
 
+.mqtt-status {
+    margin-top: 20px;
+}
+
+#mqtt-status-value {
+    line-height: 150%;
+    color: #f5f8fa;
+    text-align: center;
+}
+
+.mqtt-status .title {
+    margin-top: 10px;
+    display: block;
+    font-size: 18px;
+}
+
 .IroColorPicker {
     display: block;
     width: auto;
