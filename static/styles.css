@@ -1,0 +1,56 @@
+body {
+    color: #f5f8fa;
+    background-color: #1f1f1f;
+    line-height: 150%;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.wrap {
+    min-height: 100vh;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap .half,
+.wrap .half-readout {
+    width: 100%;
+    text-align: center;
+}
+
+.colorPicker {
+    margin: 0 auto;
+}
+
+.title {
+    line-height: 24px;
+    display: block;
+    padding: 8px 0;
+}
+
+.readout {
+    margin-top: 32px;
+    line-height: 180%;
+}
+
+#values {
+    line-height: 150%;
+}
+
+.half-readout {
+    width: 100%;
+    align-items: center;
+    font-size: 1em;
+}
+
+.IroColorPicker {
+    display: block;
+    width: auto;
+    max-width: 280px;
+    margin: 0 auto;
+}
