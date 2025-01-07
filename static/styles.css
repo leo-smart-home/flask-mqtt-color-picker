@@ -18,7 +18,7 @@ body {
 }
 
 .wrap .half,
-.wrap .half-readout {
+.wrap .selected-color {
     width: 100%;
     text-align: center;
 }
@@ -42,7 +42,7 @@ body {
     line-height: 150%;
 }
 
-.half-readout {
+.selected-color {
     width: 100%;
     align-items: center;
     font-size: 1em;
@@ -59,6 +59,22 @@ body {
 }
 
 .mqtt-status .title {
+    margin-top: 10px;
+    display: block;
+    font-size: 18px;
+}
+
+.esp-status {
+    margin-top: 20px;
+}
+
+#esp-status-value {
+    line-height: 150%;
+    color: #f5f8fa;
+    text-align: center;
+}
+
+.esp-status .title {
     margin-top: 10px;
     display: block;
     font-size: 18px;

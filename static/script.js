@@ -8,6 +8,7 @@ var colorPicker = new iro.ColorPicker(".colorPicker", {
 var values = document.getElementById("values");
 var isMouseDown = false;
 var mqttStatusValue = document.getElementById("mqtt-status-value");
+var espStatusValue = document.getElementById("esp-status-value");
 
 document.addEventListener("mousedown", function () {
     isMouseDown = true;
@@ -26,12 +27,14 @@ colorPicker.on(["color:init", "color:change"], function (color) {
 });
 
 setInterval(updateMqttStatus, 1000);
+setInterval(updateEsp32Status, 1000);
 
 function updateValues(color) {
     values.innerHTML = [
-        "hex: " + color.hexString,
-        "rgb: " + color.rgbString
+        color.hexString,
+        // "rgb: " + color.rgbString
     ].join("<br>");
+    values.style.color = color.hexString;
 }
 
 function submitColor(color) {
@@ -83,5 +86,30 @@ function updateMqttStatus() {
             console.error("Error fetching MQTT status:", error);
             mqttStatusValue.textContent = "Error fetching status";
             mqttStatusValue.style.color = "gray";
+        });
+}
+
+function updateEsp32Status() {
+    fetch("/is_esp_connected")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch ESP32 status: " + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("ESP32 status:", data);
+            if (data.is_esp_connected) {
+                espStatusValue.textContent = "Connected";
+                espStatusValue.style.color = "green";
+            } else {
+                espStatusValue.textContent = "Disconnected";
+                espStatusValue.style.color = "red";
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching ESP32 status:", error);
+            espStatusValue.textContent = "Error fetching status";
+            espStatusValue.style.color = "gray";
         });
 }
